@@ -1,0 +1,5 @@
+﻿<h3>OpenImageProcessor</h3>
+<p class="Contributor">
+	This library is just make it easy to install imageprocessor on DNN<br />
+	<a href="http://imageprocessor.org/">http://imageprocessor.org/</a><br />
+</p>

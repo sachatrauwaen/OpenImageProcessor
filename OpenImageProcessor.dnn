@@ -1,0 +1,85 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="OpenImageProcessor" type="Library" version="04.06.04">
+      <friendlyName>OpenImageProcessor</friendlyName>
+      <description>Satrabel OpenImageProcessor</description>
+      <iconFile>~/Images/icon_extensions.gif</iconFile>
+      <owner>
+        <name>Satrabel</name>
+        <organization>Satrabel</organization>
+        <url>http://www.satrabel.be</url>
+        <email>support@satrabel.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+
+      </dependencies>
+      <components>
+        <component type="Assembly">
+          <assemblies>           
+            <assembly>
+              <name>ImageProcessor.dll</name>
+              <path>bin</path>
+            </assembly>
+            <assembly>
+              <name>ImageProcessor.Web.dll</name>
+              <path>bin</path>
+            </assembly>
+          </assemblies>
+        </component>
+        <component type="Config">
+          <config>
+            <configFile>web.config</configFile>
+            <install>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/configSections" action="update" key="name" collision="overwrite">
+                    <sectionGroup name="imageProcessor">
+                      <section name="security" requirePermission="false" type="ImageProcessor.Web.Configuration.ImageSecuritySection, ImageProcessor.Web" />
+                      <section name="processing" requirePermission="false" type="ImageProcessor.Web.Configuration.ImageProcessingSection, ImageProcessor.Web" />
+                      <section name="caching" requirePermission="false" type="ImageProcessor.Web.Configuration.ImageCacheSection, ImageProcessor.Web" />
+                    </sectionGroup>
+                  </node>
+                  <node path="/configuration/system.webServer/modules" action="update" key="name" collision="overwrite">
+                    <add name="ImageProcessorModule" type="ImageProcessor.Web.HttpModules.ImageProcessingModule, ImageProcessor.Web" />
+                  </node>
+                  <node path="/configuration" action="update" targetpath="/configuration/imageProcessor" collision="ignore">
+                    <imageProcessor>
+                      <security configSource="config\imageprocessor\security.config" />
+                      <caching configSource="config\imageprocessor\cache.config" />
+                      <processing configSource="config\imageprocessor\processing.config" />
+                    </imageProcessor>
+                  </node>
+                </nodes>
+              </configuration>
+            </install>
+            <uninstall>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/configSections/sectionGroup[@name='imageProcessor']" action="remove"  />
+                  <node path="/configuration/system.webServer/modules/add[@name='ImageProcessorModule']" action="remove"  />
+                  <node path="/configuration/imageProcessor" action="remove"  />
+                </nodes>
+              </configuration>
+            </uninstall>
+          </config>
+        </component>
+        <component type="File">
+          <files>
+            <basePath>Config\imageprocessor</basePath>
+            <file>
+              <name>security.config</name>
+            </file>
+            <file>
+              <name>cache.config</name>
+            </file>
+            <file>
+              <name>processing.config</name>
+            </file>
+          </files>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

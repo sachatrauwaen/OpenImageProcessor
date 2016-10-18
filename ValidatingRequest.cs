@@ -16,12 +16,17 @@ namespace Satrabel.OpenImageProcessor
                 if (!string.IsNullOrWhiteSpace(args.QueryString))
                 {
                     var queryCollection = HttpUtility.ParseQueryString(args.QueryString);
-                    // ignore cachebuster
+                    // ignore DNN cachebuster
                     if (queryCollection.AllKeys.Contains("ver"))
                     {
                         queryCollection.Remove("ver");
-                        args.QueryString = queryCollection.ToString();
                     }
+                    // ignore ckeditor cachebuster
+                    if (queryCollection.AllKeys.Contains("t"))
+                    {
+                        queryCollection.Remove("t");
+                    }
+                    args.QueryString = queryCollection.ToString();
                 }
             }; 
         }

@@ -1,7 +1,5 @@
 ﻿using DotNetNuke.Web.Api;
 using ImageProcessor.Web.HttpModules;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
@@ -31,9 +29,11 @@ namespace Satrabel.OpenImageProcessor
                     {
                         queryCollection.Remove("timestamp");
                     }
+
                     args.QueryString = queryCollection.ToString();
                 }
-            }; 
+            };
+            
         }
     }
 }

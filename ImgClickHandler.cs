@@ -161,7 +161,7 @@ namespace Satrabel.OpenImageProcessor
                             var file = fileManager.GetFile(int.Parse(UrlUtils.GetParameterValue(url)));
                             if (file != null)
                             {
-                                if (!file.IsEnabled || !HasAPublishedVersion(file))
+                                if (!file.IsEnabled /*|| !HasAPublishedVersion(file)*/)
                                 {
                                     if (context.Request.IsAuthenticated)
                                     {
@@ -177,12 +177,13 @@ namespace Satrabel.OpenImageProcessor
                                 {
                                     var folderMapping = FolderMappingController.Instance.GetFolderMapping(file.PortalId, file.FolderMappingID);
                                     var directUrl = fileManager.GetUrl(file);
+                                    /*
                                     EventManager.Instance.OnFileDownloaded(new FileDownloadedEventArgs()
                                     {
                                         FileInfo = file,
                                         UserId = UserController.Instance.GetCurrentUserInfo().UserID
                                     });
-
+                                    */
                                     if (directUrl.Contains(key) || (blnForceDownload && folderMapping.FolderProviderType == "StandardFolderProvider"))
                                     {
                                         fileManager.WriteFileToResponse(file, contentDisposition);
@@ -246,6 +247,7 @@ namespace Satrabel.OpenImageProcessor
             }
         }
 
+        /*
         private bool HasAPublishedVersion(IFileInfo file)
         {
             if (file.HasBeenPublished)
@@ -256,8 +258,11 @@ namespace Satrabel.OpenImageProcessor
             var user = UserController.Instance.GetCurrentUserInfo();
             return user != null && user.UserID == file.CreatedByUserID;
         }
+        */
+        public bool IsReusable { get { return true; } }
 
-        public bool IsReusable => true;
+        
+	
 
         #endregion
     }

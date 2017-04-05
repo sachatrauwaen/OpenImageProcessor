@@ -13,7 +13,7 @@
       <license src="License.txt"></license>
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
       <dependencies>
-
+        <dependency type="CoreVersion">07.03.02</dependency>
       </dependencies>
       <components>
         <component type="Assembly">

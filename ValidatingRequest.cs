@@ -26,6 +26,11 @@ namespace Satrabel.OpenImageProcessor
                     {
                         queryCollection.Remove("t");
                     }
+                    // ignore DigitalAssets module cachebuster
+                    if (queryCollection.AllKeys.Contains("timestamp"))
+                    {
+                        queryCollection.Remove("timestamp");
+                    }
                     args.QueryString = queryCollection.ToString();
                 }
             }; 

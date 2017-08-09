@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="OpenImageProcessor" type="Library" version="04.06.06">
+    <package name="OpenImageProcessor" type="Library" version="04.08.04">
       <friendlyName>OpenImageProcessor</friendlyName>
       <description>Satrabel OpenImageProcessor</description>
       <iconFile>~/Images/icon_extensions.gif</iconFile>
@@ -13,7 +13,7 @@
       <license src="License.txt"></license>
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
       <dependencies>
-
+        <dependency type="CoreVersion">07.03.02</dependency>
       </dependencies>
       <components>
         <component type="Assembly">

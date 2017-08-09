@@ -1,7 +1,5 @@
 ﻿using DotNetNuke.Web.Api;
 using ImageProcessor.Web.HttpModules;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
@@ -26,9 +24,16 @@ namespace Satrabel.OpenImageProcessor
                     {
                         queryCollection.Remove("t");
                     }
+                    // ignore DigitalAssets module cachebuster
+                    if (queryCollection.AllKeys.Contains("timestamp"))
+                    {
+                        queryCollection.Remove("timestamp");
+                    }
+
                     args.QueryString = queryCollection.ToString();
                 }
-            }; 
+            };
+            
         }
     }
 }

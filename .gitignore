@@ -15,7 +15,7 @@
 *.lo
 
 # Shared objects (inc. Windows DLLs)
-*.dll
+
 *.so
 *.so.*
 *.dylib
@@ -33,3 +33,6 @@
 *.su
 obj/
 install/
+.vs/
+*.user
+packages/

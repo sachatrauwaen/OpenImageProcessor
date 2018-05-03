@@ -61,7 +61,7 @@ namespace Satrabel.OpenImageProcessor.Services
         {
             if (ImageHelpers.IsValidImageExtension(path)) return true;
             if (path.ToLowerInvariant().Contains(ImgClickHelper.Key()))
-                return ImgClickHelper.IsValidRequest(HttpContext.Current, path);
+                return ImgClickHelper.IsValidImgClickRequest(HttpContext.Current, path);
             return false;
         }
 
@@ -82,7 +82,8 @@ namespace Satrabel.OpenImageProcessor.Services
 
             if (isLinkClick >= 0)
             {
-                realpath = ImgClickHelper.GetFileNameFromPath(HttpContext.Current, path.Substring(isLinkClick + ImgClickHelper.Key().Length + 1));
+                var filekey = ImgClickHelper.ParseId(path.Substring(isLinkClick + ImgClickHelper.Key().Length + 1));
+                realpath = ImgClickHelper.GetFileNameFromPath(HttpContext.Current, filekey);
             }
             else
             {
@@ -104,8 +105,5 @@ namespace Satrabel.OpenImageProcessor.Services
 
             return buffer;
         }
-
-
-
     }
 }

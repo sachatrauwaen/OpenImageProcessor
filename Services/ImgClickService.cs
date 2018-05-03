@@ -93,7 +93,7 @@ namespace Satrabel.OpenImageProcessor.Services
             // Check to see if the file exists.
             if (!File.Exists(realpath))
             {
-                throw new HttpException((int)HttpStatusCode.NotFound, $"No image exists at {path}");
+                throw new HttpException((int)HttpStatusCode.NotFound, $"No image exists at {realpath}");
             }
 
             byte[] buffer;

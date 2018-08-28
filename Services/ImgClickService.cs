@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Web;
 using ImageProcessor.Web.Helpers;
 using ImageProcessor.Web.Services;
+using Satrabel.OpenImageProcessor.Components;
 
 namespace Satrabel.OpenImageProcessor.Services
 {
@@ -78,7 +79,7 @@ namespace Satrabel.OpenImageProcessor.Services
         {
             string realpath;
             string path = id.ToString();
-            var isLinkClick = path.ToLowerInvariant().IndexOf(ImgClickHelper.Key());
+            var isLinkClick = path.ToLowerInvariant().IndexOf(ImgClickHelper.Key(), StringComparison.Ordinal);
 
             if (isLinkClick >= 0)
             {
@@ -97,7 +98,7 @@ namespace Satrabel.OpenImageProcessor.Services
             }
 
             byte[] buffer;
-            using (FileStream file = new FileStream(realpath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
+            using (var file = new FileStream(realpath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
             {
                 buffer = new byte[file.Length];
                 await file.ReadAsync(buffer, 0, (int)file.Length);

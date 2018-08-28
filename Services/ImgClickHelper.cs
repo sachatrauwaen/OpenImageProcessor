@@ -154,7 +154,7 @@ namespace Satrabel.OpenImageProcessor.Services
             }
             catch (Exception ex)
             {
-                DotNetNuke.Services.Exceptions.Exceptions.ProcessHttpException($"File not found for fileid {fileId}");
+                DotNetNuke.Services.Exceptions.Exceptions.ProcessHttpException($"File not found for fileid {fileId}. Error: {ex.Message}");
             }
             return retval;
         }

@@ -30,6 +30,10 @@
               <name>ImageProcessor.Web.dll</name>
               <path>bin</path>
             </assembly>
+            <assembly>
+              <name>Microsoft.IO.RecyclableMemoryStream.dll</name>
+              <path>bin</path>
+            </assembly>
           </assemblies>
         </component>
         <component type="Config">

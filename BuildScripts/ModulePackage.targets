@@ -41,7 +41,7 @@
       <SourceInclude Include="**\*.js" />
       <SourceInclude Include="**\*.txt" Exclude="**\obj\**;**\_ReSharper*\**;**\.git\**;" />
       <SourceInclude Include="**\images\**" />
-      <SourceInclude Include="**\*.cs" />
+      <SourceInclude Include="**\*.cs" Exclude="**\obj\**;**\_ReSharper*\**;**\.git\**;" />
 	  <SourceInclude Include="**\Packages\**" />
       <SourceInclude Include="**\*.cs.designer" />
       <SourceInclude Include="**\*.csproj" />
@@ -61,7 +61,6 @@
       <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
 
-
     <CreateItem Include="**\*.sqldataprovider">
       <Output TaskParameter="Include" ItemName="SqlDataProviderFiles" />
     </CreateItem>
@@ -80,7 +79,7 @@
     <Copy SourceFiles="@(ConfigFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     
     
-    <!-- create the INSTALL RESOURCES.ZIP file -->
+    <!-- create the INSTALL RESOURCES.ZIP file 
     <Copy SourceFiles="@(InstallInclude)" DestinationFolder="$(MSBuildProjectDirectory)\ResourcesZip\%(RecursiveDir)" />
 
     <CreateItem Include="$(MSBuildProjectDirectory)\ResourcesZip\**\*.*">
@@ -89,7 +88,8 @@
     
     <Zip Files="@(ResourcesContent)" WorkingDirectory="$(MSBuildProjectDirectory)\ResourcesZip" ZipFileName="Resources.$(Extension)" />
     <Copy SourceFiles="$(MSBuildProjectDirectory)\Resources.$(Extension)" DestinationFolder="package/" />
-
+    -->
+    
     <CreateItem Include="$(MSBuildProjectDirectory)\Package\**\*.*">
       <Output TaskParameter="Include" ItemName="OutputContent" />
     </CreateItem>

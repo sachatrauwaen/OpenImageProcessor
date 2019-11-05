@@ -104,7 +104,9 @@
   <ItemGroup>
     <Content Include="Config\cache.config" />
     <Content Include="Config\processing.config" />
-    <Content Include="Config\security.config" />
+    <Content Include="Config\security.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />

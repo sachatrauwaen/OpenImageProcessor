@@ -6,13 +6,13 @@ ImageProcessor is a collection of lightweight libraries that allows you to manip
 It includes a dynamic image processing extension built for ASP.NET.
 It’s lighting fast, extensible, easy to use, comes bundled with some great features and is fully open source.
 
-More info can be found on [imageprocessor.org](https://imageprocessor.org/).
+More info can be found on [imageprocessor.org](https://jimbobsquarepants.github.io/ImageProcessor/).
 
 OpenImageProcessor can help you to resize, crop, watermark, and much more oprations on images on the fly by only adding query parameters to image urls.
 
 Example: https://your-image?width=600&height=250&bgcolor=fff
 
-Full documentation can be found here: [imageprocessor.org](https://imageprocessor.org/imageprocessor-web/imageprocessingmodule/)
+Full documentation can be found here: [imageprocessor.org](https://jimbobsquarepants.github.io/ImageProcessor/)
 
 **Advise**: have a look  at the methods sections.
 
